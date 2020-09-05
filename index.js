@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const routes = require('./routes')
+const mongoose = require('mongoose')
+const dbData = require('./configDB')
 
 const app = express()
 
@@ -19,6 +21,11 @@ app.use((req, res, next) => {
 })
 
 app.use('/', routes)
+
+mongoose.connect(dbData().url, { useNewUrlParser: true }, (err, res) => {
+  if(err) console.log('Error conecting to database: ' + err)
+  return true
+})
 
 app.listen(8501, () => console.log('Escuchando en el puerto 8501'))
 
