@@ -2,20 +2,13 @@
 
 const crypto = require('crypto')
 
-const sha512 = (usuario, salt) => {
+const verifyPassword = (user, salt, password) => {
 	const hash = crypto.createHmac('sha512', salt)
-	hash.update(usuario.password)
+	hash.update(user.password)
 	const value = hash.digest('hex')
-	return {
-		usuario: usuario.usuario,
-		password: value,
-	}
-}
-
-const saltHashPassword = (authData, salt) => {
-	return sha512(authData, salt)
+	return password === value
 }
 
 module.exports = {
-	saltHashPassword
+	verifyPassword
 }

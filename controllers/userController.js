@@ -1,9 +1,11 @@
 const { createUser } = require('../services/userService')
+const { saltHashNewUser } = require('../utils/hashNewUser')
 
 const postUser = async (req, res) => {
   const { user } = req.body
   try {
-    const response = await createUser(user)
+    const hashedUser = saltHashNewUser(user)
+    const response = await createUser(hashedUser)
     res.status(201).send(response)
   } catch(e) {
     console.log(e)

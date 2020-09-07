@@ -14,10 +14,12 @@
     "axios": "^0.20.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.2",
     "mongoskin": "^2.1.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.4.11",
     "nodemon": "^2.0.4",
     "rotating-file-stream": "^2.1.3"
   }
