@@ -8,7 +8,7 @@ const auth = async (req, res) => {
     const response = verifyPassword(user, dbUser.salt, dbUser.password)
     if(response) {
       const token = await loginIntoHeritageService(dbUser)
-      res.send(token)
+      res.send(token.data)
     } else {
       res.status(401).send('Usuario o contraseña erróneos')
     }
