@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const user = new Schema ({
+const User = new Schema ({
   name: { type: String },
   lastname: { type: String },
   city: { type: String },
@@ -19,4 +19,4 @@ const user = new Schema ({
   status: { type: Boolean }
 })
 
-module.exports = mongoose.model('User', user)
+module.exports = mongoose.model('User', User)
