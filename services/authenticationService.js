@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const userSchema = require('../models/user')
 const UserModel = mongoose.model('User')
 const axios = require('axios')
+const { heritageServiceAuthentication } = require('../config/')
 
 const readUser = async (authData) => {
   try {
@@ -13,11 +14,11 @@ const readUser = async (authData) => {
   }
 }
 
-const login = async (user) => {
+const loginIntoHeritageService = async (user) => {
   try {
-
+    return await axios.post(heritageServiceAuthentication, { user: user })
   } catch(e) {
-    
+    throw e
   }
 }
 

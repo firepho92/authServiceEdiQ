@@ -1,4 +1,4 @@
-const { readUser } = require('../services/authenticationService')
+const { readUser, loginIntoHeritageService } = require('../services/authenticationService')
 const { verifyPassword } = require('../utils/hashOperations')
 
 const auth = async (req, res) => {
@@ -7,7 +7,8 @@ const auth = async (req, res) => {
     const dbUser = await readUser(user)
     const response = await verifyPassword(user, dbUser.salt, dbUser.password)
     if(response) {
-      res.send(dbUser)
+      const token = await loginIntoHeritageService(dbUser)
+      res.send(token)
     } else {
       res.status(401).send('Usuario o contraseña erróneos')
     }
