@@ -5,7 +5,7 @@ const auth = async (req, res) => {
   const { user } = req.body
   try {
     const dbUser = await readUser(user)
-    const response = await verifyPassword(user, dbUser.salt, dbUser.password)
+    const response = verifyPassword(user, dbUser.salt, dbUser.password)
     if(response) {
       const token = await loginIntoHeritageService(dbUser)
       res.send(token)
