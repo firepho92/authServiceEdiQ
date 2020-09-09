@@ -23,5 +23,6 @@ const loginIntoHeritageService = async (user) => {
 }
 
 module.exports = {
-  readUser
+  readUser,
+  loginIntoHeritageService
 }
