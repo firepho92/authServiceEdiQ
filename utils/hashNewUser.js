@@ -24,7 +24,7 @@ const sha512 = (user, salt) => {
     email: user.email,
     tutorEmail: user.tutorEmail,
     products: user.products,
-    created: user.created,
+    created: new Date(),
     confirmed: user.confirmed,
     status: user.status
 	}
