@@ -8,12 +8,13 @@ const auth = async (req, res) => {
     const response = verifyPassword(user, dbUser.salt, dbUser.password)
     if(response) {
       const token = await loginIntoHeritageService(dbUser)
-      res.send(token.data)
+      console.log(dbUser)
+      res.send({ token: token.data, id: dbUser._id })
     } else {
       res.status(401).send('Usuario o contraseña erróneos')
     }
   } catch(e) {
-    if(e === 'Usuario o contraseña no erróneos') {
+    if(e === 'Usuario o contraseña erróneos') {
       res.status(401).send(e)
     } else {
       res.sendStatus(500)

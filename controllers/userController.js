@@ -1,5 +1,11 @@
-const { createUser } = require('../services/userService')
+const { readUser, createUser } = require('../services/userService')
 const { saltHashNewUser } = require('../utils/hashNewUser')
+
+const getUser = async (req, res) => {
+  const id = req.params['id']
+  const result = await readUser(id)
+  res.status(200).send(result)
+}
 
 const postUser = async (req, res) => {
   const { user } = req.body
@@ -14,5 +20,6 @@ const postUser = async (req, res) => {
 }
 
 module.exports = {
+  getUser,
   postUser
 }

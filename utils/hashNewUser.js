@@ -9,12 +9,12 @@ const generateRandomString = (length) => {
 }
 
 const sha512 = (user, salt) => {
-	const hash = crypto.createHmac('sha512', salt)
-	hash.update(user.password)
-	const value = hash.digest('hex')
-	return {
+    const hash = crypto.createHmac('sha512', salt)
+    hash.update(user.password)
+    const value = hash.digest('hex')
+    return {
     name: user.name,
-    lastname: user.lastnames,
+    lastname: user.lastname,
     city: user.city,
     state: user.state,
     country: user.country,
@@ -27,7 +27,7 @@ const sha512 = (user, salt) => {
     created: new Date(),
     confirmed: user.confirmed,
     status: user.status
-	}
+    }
 }
 
 const saltHashNewUser = (user) => {
